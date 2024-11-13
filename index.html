@@ -4,10 +4,10 @@
     <title>Loja de Produtos de Futebol</title>
     <style>
         :root {
-            --primary: #1a5f7a;
-            --secondary: #86c232;
-            --dark: #222629;
-            --light: #f0f0f0;
+            --primary: #007F00;
+            --secondary: #00B300;
+            --dark: #004D00;
+            --light: #E8F5E9;
         }
 
         * {
@@ -22,24 +22,41 @@
         }
 
         header {
-            background-color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             padding: 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-bottom: 5px solid var(--dark);
+        }
+
+        .soccer-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: repeating-linear-gradient(0deg, #fff, #fff 10px, transparent 10px, transparent 20px);
         }
 
         .soccer-ball {
             position: absolute;
             width: 50px;
             height: 50px;
-            animation: bounce 2s infinite;
+            animation: bounce 2s infinite, rotate 4s infinite linear;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .products-container {
@@ -52,7 +69,8 @@
         }
 
         .product-card {
-            background: white;
+            background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 95,25 95,75 50,95 5,75 5,25' fill='none' stroke='%23eee' stroke-width='1'/%3E%3C/svg%3E") repeat;
+            border: 3px solid var(--primary);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -77,7 +95,10 @@
         }
 
         .buy-button {
-            background: var(--secondary);
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
             color: white;
             border: none;
             padding: 1rem 2rem;
@@ -85,6 +106,7 @@
             cursor: pointer;
             font-size: 1.1rem;
             transition: background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
         .buy-button:hover {
@@ -122,10 +144,11 @@
 
         .live-section {
             padding: 2rem;
-            background: var(--dark);
+            background: linear-gradient(to bottom, var(--dark), #003300);
             margin-top: 2rem;
             text-align: center;
             color: white;
+            border-top: 5px solid var(--secondary);
         }
 
         .youtube-container {
@@ -144,6 +167,21 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .chat-container {
+            border: 3px solid var(--secondary) !important;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23f0f0f0' stroke-width='1'/%3E%3C/svg%3E") repeat !important;
+        }
+
+        #chat-messages {
+            border: 2px solid var(--primary) !important;
+            height: 300px;
+            overflow-y: auto;
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -188,10 +226,53 @@
 </head>
 <body>
     <header>
+        <div class="soccer-pattern">
+    <svg viewBox="0 0 800 200" style="width: 100%; height: 100%;">
+    <!-- Campo de futebol - visão de cima -->
+    
+    <!-- Linha central -->
+    <line x1="400" y1="0" x2="400" y2="200" stroke="white" stroke-width="2"></line>
+    <circle cx="400" cy="100" r="30" fill="none" stroke="white" stroke-width="2"></circle>
+    
+    <!-- Gol esquerdo -->
+    <g transform="translate(50, 100)">
+        <!-- Área do gol -->
+        <rect x="-40" y="-60" width="80" height="120" fill="none" stroke="white" stroke-width="2"></rect>
+        <!-- Pequena área -->
+        <rect x="-20" y="-30" width="40" height="60" fill="none" stroke="white" stroke-width="2"></rect>
+        <!-- Marca do pênalti -->
+        <circle cx="30" cy="0" r="2" fill="white"></circle>
+        <!-- Meio círculo -->
+        <path d="M -40 0 A 40 40 0 0 1 40 0" fill="none" stroke="white" stroke-width="2"></path>
+    </g>
+
+    <!-- Gol direito -->
+    <g transform="translate(750, 100)">
+        <!-- Área do gol -->
+        <rect x="-40" y="-60" width="80" height="120" fill="none" stroke="white" stroke-width="2"></rect>
+        <!-- Pequena área -->
+        <rect x="-20" y="-30" width="40" height="60" fill="none" stroke="white" stroke-width="2"></rect>
+        <!-- Marca do pênalti -->
+        <circle cx="-30" cy="0" r="2" fill="white"></circle>
+        <!-- Meio círculo -->
+        <path d="M -40 0 A 40 40 0 0 1 40 0" fill="none" stroke="white" stroke-width="2"></path>
+    </g>
+
+    <!-- Escanteios -->
+    <path d="M 0 20 A 20 20 0 0 1 20 0" fill="none" stroke="white" stroke-width="2"></path>
+    <path d="M 780 0 A 20 20 0 0 0 800 20" fill="none" stroke="white" stroke-width="2"></path>
+    <path d="M 0 180 A 20 20 0 0 0 20 200" fill="none" stroke="white" stroke-width="2"></path>
+    <path d="M 780 200 A 20 20 0 0 1 800 180" fill="none" stroke="white" stroke-width="2"></path>
+</svg>
+</div>
         <svg class="soccer-ball" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" fill="white" stroke="black" stroke-width="2"></circle>
-            <path d="M50,5 L50,95 M5,50 L95,50" stroke="black" stroke-width="2"></path>
+            <path d="M50,5 L25,20 L25,80 L50,95 L75,80 L75,20 Z" fill="none" stroke="black" stroke-width="2"></path>
             <circle cx="50" cy="50" r="15" fill="none" stroke="black" stroke-width="2"></circle>
+            <circle cx="50" cy="20" r="8" fill="black"></circle>
+            <circle cx="50" cy="80" r="8" fill="black"></circle>
+            <circle cx="25" cy="50" r="8" fill="black"></circle>
+            <circle cx="75" cy="50" r="8" fill="black"></circle>
         </svg>
         <h1>FUTE PREMIADO</h1>
         <p>Ganhe Dinheiro e assista Jogos</p>
@@ -228,32 +309,30 @@
     </div>
 
     <section class="live-section">
-    <h2>Assista Nossa Live</h2>
-    <p>Fique por dentro de todos os jogos</p>
-    <div class="youtube-container">
-        <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" title="YouTube live stream" allowfullscreen="">
-        </iframe>
-    </div>
-    <div class="chat-container" style="margin-top: 2rem; background: #fff; border-radius: 10px; padding: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <h3 style="color: var(--dark); margin-bottom: 1rem;">Chat da Live</h3>
-        <div id="chat-messages" style="height: 300px; overflow-y: auto; background: #f5f5f5; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
-            <!-- Mensagens do chat aparecerão aqui -->
-            <p style="color: #666;">Carregando mensagens...</p>
+        <h2>Assista Nossa Live</h2>
+        <p>Fique por dentro de todos os jogos</p>
+        <div class="youtube-container">
+            <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" title="YouTube live stream" allowfullscreen="">
+            </iframe>
         </div>
-        <div style="display: flex; gap: 1rem;">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
-            <button onclick="sendMessage()" style="background: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
-                Enviar
-            </button>
+        <div class="chat-container" style="margin-top: 2rem;">
+            <h3 style="color: var(--dark); margin-bottom: 1rem;">Chat da Live</h3>
+            <div id="chat-messages">
+                <p style="color: #666;">Carregando mensagens...</p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem..." style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+                <button onclick="sendMessage()" style="background: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                    Enviar
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <div class="contact-section">
     </div>
 
     <script>
-        // Animação da bola de futebol
         const ball = document.querySelector('.soccer-ball');
         let position = 0;
         
