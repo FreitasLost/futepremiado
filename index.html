@@ -119,21 +119,33 @@
             background: white;
             color: var(--dark);
         }
-    </style>
-</head>
-<body>
-    <header>
-        <svg class="soccer-ball" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="white" stroke="black" stroke-width="2"></circle>
-            <path d="M50,5 L50,95 M5,50 L95,50" stroke="black" stroke-width="2"></path>
-            <circle cx="50" cy="50" r="15" fill="none" stroke="black" stroke-width="2"></circle>
-        </svg>
-        <h1>FUTE PREMIADO</h1>
-        <p>Ganhe Dinheiro e assista Jogos</p>
-    </header>
 
-    <div class="products-container">
-    <style>
+        .live-section {
+            padding: 2rem;
+            background: var(--dark);
+            margin-top: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .youtube-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         @media (max-width: 768px) {
             .products-container {
                 grid-template-columns: 1fr;
@@ -167,36 +179,75 @@
             p {
                 font-size: 0.9rem;
             }
+
+            .youtube-container {
+                margin: 1rem auto;
+            }
         }
     </style>
-    <div class="product-card">
-        <svg class="product-image" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="80" fill="#f8f8f8" stroke="#333" stroke-width="2"></circle>
-            <path d="M50,100 L150,100 M100,50 L100,150" stroke="#333" stroke-width="2"></path>
-            <path d="M70,70 L130,130 M70,130 L130,70" stroke="#333" stroke-width="2"></path>
+</head>
+<body>
+    <header>
+        <svg class="soccer-ball" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="white" stroke="black" stroke-width="2"></circle>
+            <path d="M50,5 L50,95 M5,50 L95,50" stroke="black" stroke-width="2"></path>
+            <circle cx="50" cy="50" r="15" fill="none" stroke="black" stroke-width="2"></circle>
         </svg>
-        <h2>Quer assistir em tela reta? acesse!</h2>
-        <p>Assista para sempre em seu dispositivo</p>
-        <div class="price">
-            🔥 R$ ???,?? 
-            <span style="text-decoration: line-through; color: #999; font-size: 1.5rem;">R$ 30,99</span>
+        <h1>FUTE PREMIADO</h1>
+        <p>Ganhe Dinheiro e assista Jogos</p>
+    </header>
+
+    <div class="products-container">
+        <div class="product-card">
+            <svg class="product-image" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="80" fill="#f8f8f8" stroke="#333" stroke-width="2"></circle>
+                <path d="M50,100 L150,100 M100,50 L100,150" stroke="#333" stroke-width="2"></path>
+                <path d="M70,70 L130,130 M70,130 L130,70" stroke="#333" stroke-width="2"></path>
+            </svg>
+            <h2>Quer assistir em tela reta? acesse!</h2>
+            <p>Assista para sempre em seu dispositivo</p>
+            <div class="price">
+                🔥 R$ ???,?? 
+                <span style="text-decoration: line-through; color: #999; font-size: 1.5rem;">R$ 30,99</span>
+            </div>
+            <button class="buy-button" onclick="window.location.href='https://pay.kiwify.com.br/PiPKT0M'">Comprar Agora</button>
         </div>
-        <button class="buy-button" onclick="window.location.href='https://pay.kiwify.com.br/PiPKT0M'">Comprar Agora</button>
-    </div>
-    <div class="product-card">
-        <svg class="product-image" viewBox="0 0 200 200">
-            <rect x="40" y="40" width="120" height="120" fill="#f8f8f8" stroke="#333" stroke-width="2"></rect>
-            <path d="M60,100 L140,100" stroke="#333" stroke-width="4"></path>
-            <circle cx="100" cy="100" r="30" fill="none" stroke="#333" stroke-width="2"></circle>
-        </svg>
-        <h2>Bolada</h2>
-        <p>O maior Pix Ganha um premio de 500 Reais</p>
-        <div class="price">
-            🎁 GRÁTIS!
+        <div class="product-card">
+            <svg class="product-image" viewBox="0 0 200 200">
+                <rect x="40" y="40" width="120" height="120" fill="#f8f8f8" stroke="#333" stroke-width="2"></rect>
+                <path d="M60,100 L140,100" stroke="#333" stroke-width="4"></path>
+                <circle cx="100" cy="100" r="30" fill="none" stroke="#333" stroke-width="2"></circle>
+            </svg>
+            <h2>Bolada</h2>
+            <p>O maior Pix Ganha um premio de 500 Reais</p>
+            <div class="price">
+                🎁 GRÁTIS!
+            </div>
+            <button class="buy-button" onclick="window.location.href='https://livepix.gg/doarpixvitoria'">Comprar Agora</button>
         </div>
-        <button class="buy-button" onclick="window.location.href='https://livepix.gg/doarpixvitoria'">Comprar Agora</button>
     </div>
-</div>
+
+    <section class="live-section">
+    <h2>Assista Nossa Live</h2>
+    <p>Fique por dentro de todos os jogos</p>
+    <div class="youtube-container">
+        <iframe src="https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID" title="YouTube live stream" allowfullscreen="">
+        </iframe>
+    </div>
+    <div class="chat-container" style="margin-top: 2rem; background: #fff; border-radius: 10px; padding: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3 style="color: var(--dark); margin-bottom: 1rem;">Chat da Live</h3>
+        <div id="chat-messages" style="height: 300px; overflow-y: auto; background: #f5f5f5; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
+            <!-- Mensagens do chat aparecerão aqui -->
+            <p style="color: #666;">Carregando mensagens...</p>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
+            <button onclick="sendMessage()" style="background: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                Enviar
+            </button>
+        </div>
+    </div>
+</section>
 
     <div class="contact-section">
     </div>
